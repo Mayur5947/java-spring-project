@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+
+	<bean id="demoService" class="service.DemoService">
+		<!-- property injection -->
+		<property name="name" value="Mayur" />
+		<property name="address" ref="address" />
+	</bean>
+
+
+	<!-- constructor injection	 -->
+	<bean id="address" class="model.Address">
+		<constructor-arg ref = "city"></constructor-arg>	
+	</bean>
+	
+	
+	<bean id = "city" class = "model.City">
+		<property name="name" value="jalgaon"></property>
+	</bean>
+
+</beans>
