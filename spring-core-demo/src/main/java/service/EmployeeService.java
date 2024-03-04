@@ -43,4 +43,53 @@ public class EmployeeService {
 		repository.insertEmployee(employee);
 	}
 
+	public void removeEmployee() throws SQLException {
+		System.out.println("enter id ");
+		int id = scanner.nextInt();
+		ApplicationContext context = new ClassPathXmlApplicationContext("spring.xml");
+		EmployeeRepository repository = (EmployeeRepository) context.getBean("employeeRepository");
+		repository.removeEmployee(id);
+	}
+
+	public void updateEmployee() throws SQLException {
+		ApplicationContext context = new ClassPathXmlApplicationContext("spring.xml");
+		Employee employee = (Employee) context.getBean("employee");
+		EmployeeRepository repository = (EmployeeRepository) context.getBean("employeeRepository");
+		// Employee employee = new Employee();
+		System.out.println("enter employee id ");
+		int id = scanner.nextInt();
+
+		System.out.println("enter name ");
+		String name = scanner.next();
+
+		System.out.println("enter address");
+		String address = scanner.next();
+
+		System.out.println("enter phone");
+		long phone = scanner.nextLong();
+
+		System.out.println("enter email");
+		String email = scanner.next();
+
+		employee.setId(id);
+		employee.setName(name);
+		employee.setPhone(phone);
+		employee.setAddress(address);
+		employee.setEmail(email);
+		repository.updateEmployee(employee);
+	}
+
+	public void getEmployee() throws SQLException {
+		System.out.println("enter id ");
+		int id = scanner.nextInt();
+		ApplicationContext context = new ClassPathXmlApplicationContext("spring.xml");
+		EmployeeRepository repository = (EmployeeRepository) context.getBean("employeeRepository");
+		repository.getEmployee(id);
+	}
+
+	public void getAllEmployee() throws SQLException {
+		ApplicationContext context = new ClassPathXmlApplicationContext("spring.xml");
+		EmployeeRepository repository = (EmployeeRepository) context.getBean("employeeRepository");
+		repository.getAllEmployees();
+	}
 }
